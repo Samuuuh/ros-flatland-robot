@@ -64,3 +64,8 @@ plugins:
     angle: {min: -1.4707963, max: 1.4707963, increment: 1.4707963}
     noise_std_dev: 0.05
     layers: ["layer_1"]
+    
+  - type: Gps
+    name: turtlebot_gps
+    body: base
+    topic: gps
