@@ -1,6 +1,16 @@
 # Intelligent Robotics
 
 ## Assignment One
+This assignment was done with ROS Noetic. Thus, Ubuntu Focal as used since this is the oen that provide compatability with this this version
+Setup Operating System + ROS:
+Download and install Ubuntu 20.04 (Focal).
+For ROS installation, this guide was followed: http://wiki.ros.org/noetic/Installation/Ubuntu
+
+Before getting started, it's necessary to install other dependencies necessaries for flatland:
+```
+sudo apt-get update
+sudo apt-get install liblua5.1-0-dev
+```
 
 Steps necessary to run:
 
