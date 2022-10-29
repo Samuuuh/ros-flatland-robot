@@ -1,0 +1,13 @@
+properties:
+  velocity_iterations: 10
+  position_iterations: 10
+  
+layers:
+  - name: "layer_1"
+    map: "map.yaml"
+    color: [0, 0, 1, 1]
+    
+models:
+  - name: reactive1
+    pose: [-15, 0, 0]
+    model: "reactive.model.yaml" 

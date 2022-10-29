@@ -1,0 +1,7 @@
+image: c.png                             # begin with "/" for absolute, otherwise relative w.r.t this file
+resolution: 0.150000
+origin: [-16.600000, -6.650000, 0.000000]
+negate: 1                                  # NOT used
+occupied_thresh: 0.804
+free_thresh: 0.196                         # NOT used
+
