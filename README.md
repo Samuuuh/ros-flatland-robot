@@ -43,22 +43,16 @@ catkin_make
 8. After the last step, the project is ready to run.
 
 ### Usage
-On the root of project (if you followed the tutorial, it should be `flatland_ws`) you can run the following commands:
-
-- Launch a simple robot that will follow the wall until reaches the tip of the letter "Ç"
+Inside the `assignment_one`folder, the user should run the following command:
 ```
-roslaunch assignment_one assignment_one.launch
+python run.py
 ```
 
-- Allows the user to choose a custom map
+The user can also choose wether the robot should stop or not at the tip of the letter "Ç"
 ```
 TODO
 ```
 
-- Allows the user to choose wether the robot should stop or not at the tip of the letter "Ç"
-```
-TODO
-```
 ### Folder Structure
 This repository was the following folder structure:
 ```
