@@ -5,6 +5,8 @@ import math
 from geometry_msgs.msg import Twist
 from sensor_msgs.msg import LaserScan, NavSatFix
 
+def distance(p,q):
+    return math.sqrt(((p[0] - q[0])**2) + ((p[1] - q[1])**2))
 
 class Turtle:
     def __init__(self, target=None):
@@ -24,11 +26,13 @@ class Turtle:
         self.sub_gps = rospy.Subscriber('/gps', NavSatFix, self.callback_gps)
 
     def callback_gps(self, data):
+        lat = int(round(data.latitude ,7)*10**7)/100
+        lng = int(round(data.longitude,7)*10**7)/100
         if self.target is None or self.arrived: return
         TARGET_DISTANCE = 1
         
-        d = distance([data.longitude, data.latitude], self.target)*(10**5)
-        # print("x = ",data.longitude, ", y = ",data.latitude, ", d = ", d)
+        d = distance([lng, lat], self.target)
+        print("x = ",lng, ", y = ",lat, ", d = ", d)
 
         self.arrived = d < TARGET_DISTANCE
 
@@ -38,25 +42,32 @@ class Turtle:
         middle_laser_range = data.ranges[1]
         
         vel_msg = Twist()
+  	
+  	# Andar até chegar à parede
+        LIN_VEL = 2
+
         if self.arrived:
             vel_msg.linear.x = 0
             vel_msg.angular.z = 5
         elif not math.isnan(right_laser_range):
-            if (middle_laser_range <= self.front_distance) or right_laser_range <= self.wall_distance:
-                vel_msg.linear.x = 2
+            if (middle_laser_range <= 3):
+                vel_msg.linear.x = LIN_VEL
                 vel_msg.angular.z = 2
-            elif right_laser_range > self.wall_distance:
-                vel_msg.linear.x = 2
+            elif right_laser_range > 1:
+                vel_msg.linear.x = LIN_VEL
                 vel_msg.angular.z = -2
+            else:
+                vel_msg.linear.x = LIN_VEL
+                vel_msg.angular.z = 2
         else:
-            if (middle_laser_range > self.front_distance):
-                vel_msg.linear.x = 2
+            if (middle_laser_range > 3):
+                vel_msg.linear.x = LIN_VEL
                 vel_msg.angular.z = 0
-            elif (middle_laser_range <= self.front_distance):
-                vel_msg.linear.x = 2
+            elif (middle_laser_range <= 3):
+                vel_msg.linear.x = LIN_VEL
                 vel_msg.angular.z = 2
             else:
-                vel_msg.linear.x = 2
+                vel_msg.linear.x = LIN_VEL
                 vel_msg.angular.z = -2
         
         self.pub_cmd_vel.publish(vel_msg)

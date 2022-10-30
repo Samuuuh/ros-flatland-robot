@@ -3,16 +3,12 @@ bodies:
     type: dynamic  
     color: [1, 1, 1, 0.75] 
     footprints:
-      - type: polygon
-        density: 100
-        points: [ [-1.03, -0.337],
-                  [.07983, -0.337],
-                  [.30, -.16111],
-                  [.30, .16111],
-                  [.07983, 0.337],
-                  [-1.03, 0.337] ]
+      - type: circle
+        radius: 0.5
+        density: 1.0
+        center: [ 0.0 , 0.0]
   - name: left_wheel
-    color: [1, 1, 1, 0.75] 
+    color: [0, 1, 1, 0.75] 
     footprints:
       - type: polygon
         density: 1.0
@@ -22,7 +18,7 @@ bodies:
                  [-0.0875, -0.0255]]
 
   - name: right_wheel
-    color: [1, 1, 1, 0.75]
+    color: [1, 0, 1, 0.75]
     footprints:
       - type: polygon
         density: 1.0
@@ -34,19 +30,21 @@ bodies:
 joints:
   - type: weld
     name: right_wheel_weld
+    collide_connected: false
     bodies: 
       - name: left_wheel
         anchor: [0, 0]
       - name: base
-        anchor: [-0.83, 0.29]
+        anchor: [-0.1, 0.3]
 
   - type: weld
     name: left_wheel_weld  
+    collide_connected: false
     bodies: 
       - name: right_wheel
         anchor: [0, 0]
       - name: base
-        anchor: [-0.83, -0.29]
+        anchor: [-0.1, -0.3]
 
 plugins:
   - type: DiffDrive
@@ -69,3 +67,7 @@ plugins:
     name: turtlebot_gps
     body: base
     topic: gps
+    update_rate: 3
+    ref_lat: 0.0
+    ref_lon: 0.0
+    origin: [0, 0, 0]
