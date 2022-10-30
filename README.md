@@ -35,9 +35,10 @@ $ cd src
 chmod +x assignment_one/robot_movement.py assignment_one/robot_movement.py assignment_one/run.py assignment_one/world.py
 cd ..
 ```
-7. Build the project on the root
+7. Build the project on the root and activate the environment
 ```
 catkin_make
+source devel/setup.bash
 ```
 
 8. After the last step, the project is ready to run.
