@@ -8,7 +8,7 @@ from sensor_msgs.msg import LaserScan, NavSatFix
 def distance(p,q):
     return math.sqrt(((p[0] - q[0])**2) + ((p[1] - q[1])**2))
 
-class Turtle:
+class SimpleRobot:
     def __init__(self, target=None):
         self.target = target
         self.arrived = False
@@ -69,7 +69,7 @@ class Turtle:
 
 def main(target = None):
     try:
-        turtle = Turtle(target)
+        robot = SimpleRobot(target)
         rospy.spin()
     except rospy.ROSInterruptException:
         rospy.logwarn(f'Service failed with the exception {e}')
