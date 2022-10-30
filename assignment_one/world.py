@@ -5,7 +5,7 @@ from math import pi
 class GenerateMap:
   def __init__(self):
     self.map_num = randint(1,7)
-    self.pos = get_robot_pos()
+    self.pos = self.get_robot_pos()
     
   def get_robot_pos(self):
     if self.map_num == 2:
