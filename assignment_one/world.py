@@ -12,8 +12,8 @@ def get_pos(map_num):
     return [randint(-5,5),randint(-5,5), randint(90,270)/360*2*pi ] 
   
   
-def get_world(map_num, pos):
-  world = f"""
+def get_world(pos):
+  return f"""
   properties:
     velocity_iterations: 10
     position_iterations: 10
@@ -29,7 +29,8 @@ def get_world(map_num, pos):
       model: \"reactive.model.yaml\" 
   """
 
-  MAP = f"""
+def get_map(map_num):
+  return f"""
   image: {map_num}.png
   resolution: 0.150000
   origin: [-25, -20, 0.000000]
