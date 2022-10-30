@@ -1,7 +1,7 @@
 from random import randint
 from math import pi
 
-MAP_NUM = randint(1,6)
+MAP_NUM = randint(1,7)
 
 if MAP_NUM == 2:
   POS = [randint(-11,2), randint(-5,5) ,randint(-90,90)/360*2*pi ] 

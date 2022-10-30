@@ -1,5 +1,5 @@
 
-image: 6.png                             # begin with "/" for absolute, otherwise relative w.r.t this file
+image: 2.png                             # begin with "/" for absolute, otherwise relative w.r.t this file
 resolution: 0.150000
 origin: [-25, -20, 0.000000]
 negate: 1                                  # NOT used

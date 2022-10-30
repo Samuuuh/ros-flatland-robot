@@ -82,4 +82,4 @@ def main(target = None):
         rospy.logwarn(f'Service failed with the exception {e}')
 
 if __name__ == '__main__':
-    main()
+    main((-1,-17))
