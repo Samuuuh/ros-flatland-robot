@@ -12,6 +12,7 @@ class Turtle:
     def __init__(self, target=None):
         self.target = target
         self.arrived = False
+        self.linear_velocity = 2
         self.front_distance = 3
         self.wall_distance = 1
         
@@ -43,38 +44,30 @@ class Turtle:
         
         vel_msg = Twist()
   	
-  	# Andar até chegar à parede
-        LIN_VEL = 2
-
         if self.arrived:
             vel_msg.linear.x = 0
             vel_msg.angular.z = 5
+            self.pub_cmd_vel.publish(vel_msg)
+            return
+            
         elif not math.isnan(right_laser_range):
-            if (middle_laser_range <= 3):
-                vel_msg.linear.x = LIN_VEL
+            if (middle_laser_range <= 3) or (right_laser_range <= 1):
                 vel_msg.angular.z = 2
-            elif right_laser_range > 1:
-                vel_msg.linear.x = LIN_VEL
-                vel_msg.angular.z = -2
             else:
-                vel_msg.linear.x = LIN_VEL
-                vel_msg.angular.z = 2
+                vel_msg.angular.z = -2
         else:
             if (middle_laser_range > 3):
-                vel_msg.linear.x = LIN_VEL
                 vel_msg.angular.z = 0
             elif (middle_laser_range <= 3):
-                vel_msg.linear.x = LIN_VEL
                 vel_msg.angular.z = 2
             else:
-                vel_msg.linear.x = LIN_VEL
                 vel_msg.angular.z = -2
         
+        vel_msg.linear.x = self.linear_velocity
         self.pub_cmd_vel.publish(vel_msg)
   
 
 def main(target = None):
-    
     try:
         turtle = Turtle(target)
         rospy.spin()
