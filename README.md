@@ -1,41 +1,84 @@
 # Intelligent Robotics
-
 ## Assignment One
-This assignment was done with ROS Noetic. Thus, Ubuntu Focal as used since this is the oen that provide compatability with this this version
-Setup Operating System + ROS:
-Download and install Ubuntu 20.04 (Focal).
-For ROS installation, this guide was followed: http://wiki.ros.org/noetic/Installation/Ubuntu
+This projects implements a 2D reactive robot that wanders around an environment until an end position is reached. The project was built using Robot Operating System (ROS) and the Flatland Package.
 
-Before getting started, it's necessary to install other dependencies necessaries for flatland:
-```
-sudo apt-get update
-sudo apt-get install liblua5.1-0-dev
-```
+### Installation 
+This assignment was done with [ROS Noetic Ninjemys](http://wiki.ros.org/noetic). 
+Ubuntu 20.04 LTS (Focal Fossa) was used since this is the one that natively supports ROS Noetic.
 
-Steps necessary to run:
+1. Download and install Ubuntu 20.04 (Focal).
+2. After Ubuntu 20.03 is installed, is necessary to install ROS. For ROS installation, this [installation guide](http://wiki.ros.org/noetic/Installation/Ubuntu) was followed. 
 
-1. Setup necessary folders
+3. Our project depends on [Flatland](https://flatland-simulator.readthedocs.io/en/latest/) which is a performance centric 2D robot simulator started at Avidbots Corp.
+It's necessary to install this extra dependencie for the package to run:
 ```
-mkdir flatland_ws
-cd flatland_ws
-mkdir src
-cd src
+$ sudo apt-get update
+$ sudo apt-get install liblua5.1-0-dev
 ```
 
-2. In the folder flatland_ws/src you will put the folder assignment_one/ and clone flatland repository
+4. After everything is installed, it's necessary to setup the folders in order to run the project. Let's start by creating the necessary folders. The folder `flatland_ws` will be the root for this project.
 ```
-git clone https://github.com/avidbots/flatland
+$ mkdir flatland_ws
+$ cd flatland_ws
+$ mkdir src
+$ cd src
 ```
-After this step, you should have the following folders: /src/flatland /src/assignment_one/
 
-3. Allow the python code to be executable
+5. In the folder `flatland_ws/src/` you will put the [Flatland Repository](https://github.com/avidbots/flatland) as well as this repository. Alternatively, instead of cloning this repository, you could just put the folder `assignment_one` under the folder `flatland_ws/src`.  
+  ```
+  $ git clone https://github.com/avidbots/flatland
+  $ git clone https://github.com/Samuuuh/feup-ri/
+  ```
+  
+6. After the previous step, you should have the following folders: `flatland_ws/src/flatland` and `flatland_ws/src/assignment_one/`. Now it is necessary to allow the python code to be executable.
 ```
-chmod +x assignment_one/robot_movement.py
+chmod +x assignment_one/robot_movement.py assignment_one/robot_movement.py assignment_one/run.py assignment_one/world.py
 cd ..
 ```
-
-4. On the root (flatland_ws/) run the following commands
+7. Build the project on the root
 ```
 catkin_make
+```
+
+8. After the last step, the project is ready to run.
+
+### Usage
+On the root of project (if you followed the tutorial, it should be `flatland_ws`) you can run the following commands:
+
+- Launch a simple robot that will follow the wall until reaches the tip of the letter "Ç"
+```
 roslaunch assignment_one assignment_one.launch
 ```
+
+- Allows the user to choose a custom map
+```
+TODO
+```
+
+- Allows the user to choose wether the robot should stop or not at the tip of the letter "Ç"
+```
+TODO
+```
+### Folder Structure
+This repository was the following folder structure:
+```
+.              
+├── assignment_one                 # ROS Project Files
+│   ├── launch              
+│   │   └── assignment_one.launch  # File responsible to initialize the program
+│   ├── models                     # Models of the map and robot
+│   │   ├── world.yaml
+│   │   └── ...
+│   ├── robot_movement.py          # Manage sensor information and gives actions to the robot
+│   ├── run.py                     # Inits the program
+│   ├── world.py                   # Generate the map and the initial position of the robot
+│   └── ..                         # Packages necessary to run the ROS Project
+└── README.md
+```
+
+### Contributors
+| Name             | Number    | E-Mail             |
+| ---------------- | --------- | ------------------ |
+| Diogo Fernandes  | 201806250 | up201806250@edu.fe.up.pt |
+| Hugo Guimarães   | 201806490 | up201806490@edu.fe.up.pt |
+| Iohan Sardinha   | 201801011 | up201801011@edu.fe.up.pt |
