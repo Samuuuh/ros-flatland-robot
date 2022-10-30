@@ -12,13 +12,16 @@ class Turtle:
     def __init__(self, target=None):
         self.target = target
         self.arrived = False
-
+        self.front_distance = 3
+        self.wall_distance = 1
+        
         # Init RosPy
         rospy.init_node('flatland_server', anonymous=True)
         
         # Publishers
         self.pub_cmd_vel = rospy.Publisher('/cmd_vel', Twist, queue_size=10)
-	    # Subscribers
+	
+	# Subscribers
         self.sub_lase_sensor = rospy.Subscriber('/scan', LaserScan, self.callback_laser, tcp_nodelay=True)
         self.sub_gps = rospy.Subscriber('/gps', NavSatFix, self.callback_gps)
 
@@ -35,20 +38,16 @@ class Turtle:
 
 
     def callback_laser(self, data):
-        max_distance = 2
-        min_distance = 2
-        
         right_laser_range = data.ranges[0] 
         middle_laser_range = data.ranges[1]
-        left_laser_range = data.ranges[2]
         
-        #print(f"right: {right_laser_range}")
-        #print(f"middle: {middle_laser_range}")
         vel_msg = Twist()
   	
   	# Andar até chegar à parede
         LIN_VEL = 2
+
         if self.arrived:
+            vel_msg.linear.x = 0
             vel_msg.angular.z = 5
         elif not math.isnan(right_laser_range):
             if (middle_laser_range <= 3):
