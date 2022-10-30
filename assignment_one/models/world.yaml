@@ -9,5 +9,5 @@ layers:
     
 models:
   - name: reactive1
-    pose: [-4, -5, 4.4331363000655974]
+    pose: [4, 4, 2.111848394913139]
     model: "reactive.model.yaml" 
