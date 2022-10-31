@@ -5,6 +5,7 @@
   <arg name="show_viz" default="true"/>
   <arg name="viz_pub_rate" default="30.0"/>
   <arg name="use_rviz" default="false"/>  
+  <arg name="target" default=""/>
 
   <env name="ROSCONSOLE_FORMAT" value="[${severity} ${time} ${logger}]: ${message}" />
 
@@ -19,7 +20,7 @@
     <param name="viz_pub_rate" value="$(arg viz_pub_rate)" />
   </node>
   
-  <node pkg="assignment_one" name="robot_movement" type="robot_movement.py" output="screen" /> 
+  <node pkg="assignment_one" name="robot_movement" type="robot_movement.py" args="$(arg target)" output="screen"/> 
 
 <group if="$(arg show_viz)">
   <node name="flatland_viz" pkg="flatland_viz" type="flatland_viz" output="screen" required="true" unless="$(arg use_rviz)"/>

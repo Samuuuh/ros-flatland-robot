@@ -75,4 +75,8 @@ def main(target = None):
         rospy.logwarn(f'Service failed with the exception {e}')
 
 if __name__ == '__main__':
-    main((-1,-17))
+    from sys import argv
+    try:
+        main((int(argv[1]),int(argv[2])))
+    except:
+        main()

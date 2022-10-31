@@ -45,12 +45,12 @@ source devel/setup.bash
 ### Usage
 Inside the `assignment_one`folder, the user should run the following command:
 ```
-python run.py
+python run.py [target_x] [target_y]
 ```
 
-The user can also choose wether the robot should stop or not at the tip of the letter "Ç"
+The user can also choose wether the robot should stop or not at the tip of the letter "Ç" by passing a target value as follows
 ```
-TODO
+python run.py -1 -17
 ```
 
 ### Folder Structure
