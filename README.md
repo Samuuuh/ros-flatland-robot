@@ -24,10 +24,9 @@ $ mkdir src
 $ cd src
 ```
 
-5. In the folder `flatland_ws/src/` you will put the [Flatland Repository](https://github.com/avidbots/flatland) as well as this repository. Alternatively, instead of cloning this repository, you could just put the folder `assignment_one` under the folder `flatland_ws/src`.  
+5. In the folder `flatland_ws/src/` you will put the [Flatland Repository](https://github.com/avidbots/flatland). You also need to copy the `assignment_one` folder inside this repository under the folder `flatland_ws/src`.  
   ```
   $ git clone https://github.com/avidbots/flatland
-  $ git clone https://github.com/Samuuuh/feup-ri/
   ```
   
 6. After the previous step, you should have the following folders: `flatland_ws/src/flatland` and `flatland_ws/src/assignment_one/`. Now it is necessary to allow the python code to be executable.
