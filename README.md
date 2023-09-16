@@ -23,14 +23,14 @@ $ mkdir src
 $ cd src
 ```
 
-5. In the folder `flatland_ws/src/` you will put the [Flatland Repository](https://github.com/avidbots/flatland). You also need to copy the `assignment_one` folder inside this repository under the folder `flatland_ws/src`.  
+5. In the folder `flatland_ws/src/` you will put the [Flatland Repository](https://github.com/avidbots/flatland). You also need to copy the `project` folder inside this repository under the folder `flatland_ws/src`.  
   ```
   $ git clone https://github.com/avidbots/flatland
   ```
   
-6. After the previous step, you should have the following folders: `flatland_ws/src/flatland` and `flatland_ws/src/assignment_one/`. Now it is necessary to allow the python code to be executable.
+6. After the previous step, you should have the following folders: `flatland_ws/src/flatland` and `flatland_ws/src/project/`. Now it is necessary to allow the python code to be executable.
 ```
-chmod +x assignment_one/robot_movement.py assignment_one/robot_movement.py assignment_one/run.py assignment_one/world.py
+chmod +x project/robot_movement.py project/robot_movement.py project/run.py project/world.py
 cd ..
 ```
 7. Build the project on the root and activate the environment
@@ -42,7 +42,7 @@ source devel/setup.bash
 8. After the last step, the project is ready to run.
 
 ## Usage
-Inside the `assignment_one`folder, the user should run the following command:
+Inside the `project`folder, the user should run the following command:
 ```
 python run.py [target_x] [target_y]
 ```
@@ -56,9 +56,9 @@ python run.py -1 -17
 This repository was the following folder structure:
 ```
 .              
-├── assignment_one                 # ROS Project Files
+├── project                 # ROS Project Files
 │   ├── launch              
-│   │   └── assignment_one.launch  # File responsible to initialize the program
+│   │   └── project.launch  # File responsible to initialize the program
 │   ├── models                     # Models of the map and robot
 │   │   ├── world.yaml
 │   │   └── ...
