@@ -1,8 +1,7 @@
-# Intelligent Robotics
-## Assignment One
+# Intelligent Robotics - 2D Reactive Robot on Flatland
 This projects implements a 2D reactive robot that wanders around an environment until an end position is reached. The project was built using Robot Operating System (ROS) and the Flatland Package.
 
-### Installation 
+## Installation 
 This assignment was done with [ROS Noetic Ninjemys](http://wiki.ros.org/noetic). 
 Ubuntu 20.04 LTS (Focal Fossa) was used since this is the one that natively supports ROS Noetic.
 
@@ -42,7 +41,7 @@ source devel/setup.bash
 
 8. After the last step, the project is ready to run.
 
-### Usage
+## Usage
 Inside the `assignment_one`folder, the user should run the following command:
 ```
 python run.py [target_x] [target_y]
@@ -53,7 +52,7 @@ The user can also choose wether the robot should stop or not at the tip of the l
 python run.py -1 -17
 ```
 
-### Folder Structure
+## Folder Structure
 This repository was the following folder structure:
 ```
 .              
@@ -70,7 +69,7 @@ This repository was the following folder structure:
 └── README.md
 ```
 
-### Contributors
+## Contributors
 | Name             | Number    | E-Mail             |
 | ---------------- | --------- | ------------------ |
 | Diogo Fernandes  | 201806250 | up201806250@edu.fe.up.pt |
